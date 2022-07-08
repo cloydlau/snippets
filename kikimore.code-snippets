@@ -182,8 +182,8 @@
 	"KiPopButton:danger": {
 		"prefix": "KiPopButton:danger",
 		"body": [
-			"<KiPopButton v-if=\"pageBtnList.includes('删除')\"",
-			"  :elTooltipProps=\"{ content: '删除' }\" @click=\"d({ id })\">",
+			"<KiPopButton v-if=\"hasBtn['删除']\" :elTooltipProps=\"{ content: '删除' }\"",
+			"  @click=\"d({ id })\">",
 			"  删除",
 			"</KiPopButton>"
 		],
@@ -191,7 +191,7 @@
 	"KiPopButton": {
 		"prefix": "KiPopButton",
 		"body": [
-			"<KiPopButton v-if=\"pageBtnList.includes('')\" @click=\"TODO({ id })\">",
+			"<KiPopButton v-if=\"hasBtn['']\" @click=\"TODO({ id })\">",
 			"  ",
 			"</KiPopButton>"
 		],
