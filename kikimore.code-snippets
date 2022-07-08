@@ -15,6 +15,80 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
+	"KiFormDialog": {
+		"prefix": "KiFormDialog",
+		"body": [
+			"<KiFormDialog title=\"$0\" v-model=\"TODO.data\" :show.sync=\"TODO.show\"",
+			"  :retrieve=\"TODO.retrieve\" :submit=\"TODO.submit\" :loading=\"TODO.loading\">",
+			"  <template #el-form>",
+			"    <el-form-item label=\"\" prop=\"\" verify>",
+			"      <el-input v-model.trim=\"form.data.TODO\" maxlength=\"30\" show-word-limit clearable />",
+			"    </el-form-item>",
+			"    <el-form-item label=\"\" prop=\"\" verify>",
+			"      <KiSelect v-model=\"form.data.TODO\" :options=\"[",
+			"        { label: '', value: '' },",
+			"        { label: '', value: '' },",
+			"      ]\" :props=\"{ label: 'label', value: 'value' }\" />",
+			"    </el-form-item>",
+			"  </template>",
+			"</KiFormDialog>"
+		],
+	},
+	"KiFormDialog.data": {
+		"prefix": "KiFormDialog.data",
+		"body": [
+			"TODO: {",
+			"  show: false,",
+			"  data: {},",
+			"  retrieve: () => new Promise((resolve, reject) => {",
+			"    this.\\$POST('', {",
+			"      id: this.TODO.data.id,",
+			"    }).then(({ data }) => {",
+			"      this.TODO.data = data || {}",
+			"      resolve()",
+			"    }).catch(e => {",
+			"      reject(e)",
+			"    })",
+			"  }),",
+			"  loading: false,",
+			"  submit: () => new Promise((resolve, reject) => {",
+			"    this.\\$POST('', this.TODO.data).then(res => {",
+			"      resolve()",
+			"    }).catch(e => {",
+			"      reject(e)",
+			"    })",
+			"  }),",
+			"},"
+		],
+	},
+	"KiFormDialog:readonly": {
+		"prefix": "KiFormDialog:readonly",
+		"body": [
+			"<KiFormDialog title=\"$0\" v-model=\"TODO.data\" :show.sync=\"TODO.show\" readonly",
+			"  :retrieve=\"TODO.retrieve\">",
+			"  ",
+			"</KiFormDialog>"
+		],
+	},
+	"KiFormDialog.data:readonly": {
+		"prefix": "KiFormDialog.data:readonly",
+		"body": [
+			"TODO: {",
+			"  show: false,",
+			"  data: {},",
+			"  retrieve: () => new Promise((resolve, reject) => {",
+			"    this.\\$POST('', {",
+			"      id: this.TODO.data.id,",
+			"    }).then(({ data }) => {",
+			"      this.TODO.data = data || {}",
+			"      resolve()",
+			"    }).catch(e => {",
+			"      reject(e)",
+			"    })",
+			"  }),",
+			"},"
+		],
+	},
 	"KiFormDialog:subcomponent": {
 		"prefix": "KiFormDialog:subcomponent",
 		"body": [
@@ -49,80 +123,6 @@
 			"<style lang=\"scss\" scoped>",
 			"",
 			"</style>"
-		],
-	},
-	"KiFormDialog:readonly": {
-		"prefix": "KiFormDialog:readonly",
-		"body": [
-			"<KiFormDialog title=\"$0\" v-model=\"TODO.data\" :show.sync=\"TODO.show\" readonly",
-			"  :retrieve=\"TODO.retrieve\">",
-			"  ",
-			"</KiFormDialog>"
-		],
-	},
-	"KiFormDialog": {
-		"prefix": "KiFormDialog",
-		"body": [
-			"<KiFormDialog title=\"$0\" v-model=\"TODO.data\" :show.sync=\"TODO.show\"",
-			"  :retrieve=\"TODO.retrieve\" :submit=\"TODO.submit\" :loading=\"TODO.loading\">",
-			"  <template #el-form>",
-			"    <el-form-item label=\"\" prop=\"\" verify>",
-			"      <el-input v-model.trim=\"form.data.TODO\" maxlength=\"30\" show-word-limit clearable />",
-			"    </el-form-item>",
-			"    <el-form-item label=\"\" prop=\"\" verify>",
-			"      <KiSelect v-model=\"form.data.TODO\" :options=\"[",
-			"        { label: '', value: '' },",
-			"        { label: '', value: '' },",
-			"      ]\" :props=\"{ label: 'label', value: 'value' }\" />",
-			"    </el-form-item>",
-			"  </template>",
-			"</KiFormDialog>"
-		],
-	},
-	"KiFormDialog.data:readonly": {
-		"prefix": "KiFormDialog.data:readonly",
-		"body": [
-			"TODO: {",
-			"  show: false,",
-			"  data: {},",
-			"  retrieve: () => new Promise((resolve, reject) => {",
-			"    this.\\$POST('', {",
-			"      id: this.TODO.data.id,",
-			"    }).then(({ data }) => {",
-			"      this.TODO.data = data || {}",
-			"      resolve()",
-			"    }).catch(e => {",
-			"      reject(e)",
-			"    })",
-			"  }),",
-			"},"
-		],
-	},
-	"KiFormDialog.data": {
-		"prefix": "KiFormDialog.data",
-		"body": [
-			"TODO: {",
-			"  show: false,",
-			"  data: {},",
-			"  retrieve: () => new Promise((resolve, reject) => {",
-			"    this.\\$POST('', {",
-			"      id: this.TODO.data.id,",
-			"    }).then(({ data }) => {",
-			"      this.TODO.data = data || {}",
-			"      resolve()",
-			"    }).catch(e => {",
-			"      reject(e)",
-			"    })",
-			"  }),",
-			"  loading: false,",
-			"  submit: () => new Promise((resolve, reject) => {",
-			"    this.\\$POST('', this.TODO.data).then(res => {",
-			"      resolve()",
-			"    }).catch(e => {",
-			"      reject(e)",
-			"    })",
-			"  }),",
-			"},"
 		],
 	},
 	"KiSelect:options": {
@@ -177,6 +177,30 @@
 			"    reject(e)",
 			"  })",
 			"})\""
+		],
+	},
+	"KiPopButton:danger": {
+		"prefix": "KiPopButton:danger",
+		"body": [
+			"<KiPopButton v-if=\"pageBtnList.includes('删除')\"",
+			"  :elTooltipProps=\"{ content: '删除' }\" @click=\"d({ id })\">",
+			"  删除",
+			"</KiPopButton>"
+		],
+	},
+	"KiPopButton": {
+		"prefix": "KiPopButton",
+		"body": [
+			"<KiPopButton v-if=\"pageBtnList.includes('')\" @click=\"TODO({ id })\">",
+			"  ",
+			"</KiPopButton>"
+		],
+	},
+	"KiPopSwitch": {
+		"prefix": "KiPopSwitch",
+		"body": [
+			"<KiPopSwitch v-bind=\"popSwitchProps(status)\"",
+			"  @change=\"updateStatus({ id, status: status ^ 1 })\" />"
 		],
 	},
 }
