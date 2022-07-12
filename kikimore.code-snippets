@@ -191,7 +191,7 @@
 	"KiPopButton": {
 		"prefix": "KiPopButton",
 		"body": [
-			"<KiPopButton v-if=\"hasBtn['']\" @click=\"TODO({ id })\">",
+			"<KiPopButton v-if=\"hasBtn['$0']\" @click=\"TODO({ id })\">",
 			"  ",
 			"</KiPopButton>"
 		],
