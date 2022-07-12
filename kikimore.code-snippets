@@ -182,8 +182,8 @@
 	"KiPopButton:danger": {
 		"prefix": "KiPopButton:danger",
 		"body": [
-			"<KiPopButton v-if=\"hasBtn['删除']\" :elTooltipProps=\"{ content: '删除' }\"",
-			"  @click=\"d({ id })\">",
+			"<KiPopButton v-if=\"hasBtn['删除']\" text=\"![#FF7575]\"",
+			"  :elTooltipProps=\"{ content: '删除' }\" @click=\"d({ id })\">",
 			"  删除",
 			"</KiPopButton>"
 		],
