@@ -19,7 +19,7 @@
 		"prefix": "KiFormDialog",
 		"body": [
 			"<KiFormDialog title=\"$0\" v-model=\"TODO.data\" :show.sync=\"TODO.show\"",
-			"  :retrieve=\"TODO.retrieve\" :submit=\"TODO.submit\" :loading=\"TODO.loading\">",
+			"  :retrieve=\"TODO.retrieve\" :submit=\"TODO.submit\">",
 			"  <template #el-form>",
 			"    <el-form-item label=\"\" prop=\"\" verify>",
 			"      <el-input v-model.trim=\"form.data.TODO\" maxlength=\"30\" show-word-limit clearable />",
@@ -50,7 +50,6 @@
 			"      reject(e)",
 			"    })",
 			"  }),",
-			"  loading: false,",
 			"  submit: () => new Promise((resolve, reject) => {",
 			"    this.\\$POST('', this.TODO.data).then(res => {",
 			"      resolve()",
@@ -94,7 +93,7 @@
 		"body": [
 			"<template>",
 			"  <KiFormDialog :title=\"formTitle\" v-model=\"form.data\" :show.sync=\"form.show\"",
-			"    :submit=\"submitForm\" :loading=\"form.loading\" ref=\"kiFormDialogRef\">",
+			"    :submit=\"submitForm\" ref=\"kiFormDialogRef\">",
 			"    <template #el-form>",
 			"      <el-form-item label=\"\" prop=\"\" verify>",
 			"        <el-input v-model.trim=\"form.data.TODO\" maxlength=\"30\" show-word-limit",
