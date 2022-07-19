@@ -117,8 +117,8 @@
 			"</script>"
 		],
 	},
-	"admate:form": {
-		"prefix": "admate:form",
+	"admate:form-page": {
+		"prefix": "admate:form-page",
 		"body": [
 			"<template>",
 			"  <div class=\"app-container\" v-loading=\"form.loading\" p=\"!x-3rem !y-2rem\">",
